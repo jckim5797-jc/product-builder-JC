@@ -1,24 +1,47 @@
+:root {
+    --bg-color: #f0f2f5;
+    --container-bg: #ffffff;
+    --text-color: #333333;
+    --primary-color: #4CAF50;
+    --button-bg: #007bff;
+    --button-hover: #0056b3;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+    --bg-color: #18191a;
+    --container-bg: #242526;
+    --text-color: #e4e6eb;
+    --primary-color: #2ecc71;
+    --button-bg: #3a3b3c;
+    --button-hover: #4e4f50;
+    --shadow: rgba(0, 0, 0, 0.5);
+}
+
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f2f5;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
     text-align: center;
-    background-color: #fff;
+    background-color: var(--container-bg);
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px var(--shadow);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 h1 {
     margin-bottom: 30px;
-    color: #333;
+    color: var(--text-color);
 }
 
 .lotto-machine {
@@ -36,7 +59,7 @@ h1 {
 .number {
     width: 50px;
     height: 50px;
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -57,11 +80,17 @@ h1 {
     }
 }
 
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
 #generate {
     padding: 15px 30px;
     font-size: 18px;
     color: white;
-    background-color: #007bff;
+    background-color: var(--button-bg);
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -69,5 +98,21 @@ h1 {
 }
 
 #generate:hover {
-    background-color: #0056b3;
+    background-color: var(--button-hover);
+}
+
+#theme-toggle {
+    padding: 15px 20px;
+    font-size: 18px;
+    color: var(--text-color);
+    background-color: transparent;
+    border: 1px solid var(--text-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--text-color);
+    color: var(--container-bg);
 }
