@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const numbersContainer = document.getElementById('numbers');
+    const numbersWrapper = document.getElementById('numbers-wrapper');
     const generateButton = document.getElementById('generate');
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     generateButton.addEventListener('click', () => {
-        generateNumbers();
+        generateAllSets();
     });
 
     themeToggle.addEventListener('click', () => {
@@ -20,10 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', theme);
     });
 
-    function generateNumbers() {
-        numbersContainer.innerHTML = '';
-        const lottoNumbers = new Set();
+    function generateAllSets() {
+        numbersWrapper.innerHTML = '';
+        for (let i = 0; i < 5; i++) {
+            const setDiv = document.createElement('div');
+            setDiv.classList.add('numbers-set');
+            numbersWrapper.appendChild(setDiv);
+            generateSet(setDiv, i);
+        }
+    }
 
+    function generateSet(container, setIndex) {
+        const lottoNumbers = new Set();
         while (lottoNumbers.size < 6) {
             const randomNumber = Math.floor(Math.random() * 45) + 1;
             lottoNumbers.add(randomNumber);
@@ -31,13 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const sortedNumbers = Array.from(lottoNumbers).sort((a, b) => a - b);
 
-        sortedNumbers.forEach((number, index) => {
+        sortedNumbers.forEach((number, numIndex) => {
+            // Delay based on both set and number index for a nice sequential reveal
             setTimeout(() => {
                 const numberDiv = document.createElement('div');
                 numberDiv.classList.add('number');
                 numberDiv.textContent = number;
-                numbersContainer.appendChild(numberDiv);
-            }, index * 300);
+                container.appendChild(numberDiv);
+            }, (setIndex * 150) + (numIndex * 100));
         });
     }
 });
