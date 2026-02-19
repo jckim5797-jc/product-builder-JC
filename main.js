@@ -32,15 +32,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function generateSet(container, setIndex) {
         const lottoNumbers = new Set();
-        while (lottoNumbers.size < 6) {
+        // Generate 7 unique numbers (6 main + 1 bonus)
+        while (lottoNumbers.size < 7) {
             const randomNumber = Math.floor(Math.random() * 45) + 1;
             lottoNumbers.add(randomNumber);
         }
 
-        const sortedNumbers = Array.from(lottoNumbers).sort((a, b) => a - b);
+        const allNumbers = Array.from(lottoNumbers);
+        const bonusNumber = allNumbers.pop(); // The 7th number is the bonus
+        const sortedNumbers = allNumbers.sort((a, b) => a - b);
 
+        // Display 6 main numbers
         sortedNumbers.forEach((number, numIndex) => {
-            // Delay based on both set and number index for a nice sequential reveal
             setTimeout(() => {
                 const numberDiv = document.createElement('div');
                 numberDiv.classList.add('number');
@@ -48,5 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.appendChild(numberDiv);
             }, (setIndex * 150) + (numIndex * 100));
         });
+
+        // Display '+' sign and bonus number
+        setTimeout(() => {
+            const plusSpan = document.createElement('span');
+            plusSpan.classList.add('plus-sign');
+            plusSpan.textContent = '+';
+            container.appendChild(plusSpan);
+
+            const bonusDiv = document.createElement('div');
+            bonusDiv.classList.add('number', 'bonus');
+            bonusDiv.textContent = bonusNumber;
+            container.appendChild(bonusDiv);
+        }, (setIndex * 150) + (6 * 100) + 200);
     }
 });
