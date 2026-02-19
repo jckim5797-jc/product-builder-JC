@@ -3,7 +3,7 @@
     --container-bg: #ffffff;
     --text-color: #333333;
     --primary-color: #4CAF50;
-    --bonus-color: #ffc107; /* Bright Gold for Bonus */
+    --bonus-color: #ffc107;
     --button-bg: #007bff;
     --button-hover: #0056b3;
     --shadow: rgba(0, 0, 0, 0.1);
@@ -29,8 +29,9 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column; /* Changed to accommodate top ad */
+    justify-content: flex-start;
+    align-items: center;
     min-height: 100vh;
     margin: 0;
     transition: background-color 0.3s, color 0.3s;
@@ -45,7 +46,7 @@ body {
     transition: background-color 0.3s, box-shadow 0.3s;
     width: 95%;
     max-width: 650px;
-    margin: 40px 20px;
+    margin: 20px;
 }
 
 h1 {
@@ -134,6 +135,7 @@ h1 {
 
 .contact-section {
     text-align: left;
+    margin-bottom: 30px;
 }
 
 .contact-section h2 {
@@ -196,6 +198,23 @@ h1 {
     opacity: 0.9;
 }
 
+/* AdSense Styles */
+.ad-container {
+    width: 100%;
+    max-width: 650px;
+    margin: 20px auto;
+    background: transparent;
+    overflow: hidden;
+}
+
+.top-ad {
+    margin-top: 40px;
+}
+
+.bottom-ad {
+    margin-top: 40px;
+}
+
 #theme-toggle {
     position: fixed;
     top: 20px;
@@ -218,4 +237,16 @@ h1 {
 
 #theme-toggle:hover {
     transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    .number {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        margin: 0 3px;
+    }
 }
