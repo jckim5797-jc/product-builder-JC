@@ -6,6 +6,8 @@
     --button-bg: #007bff;
     --button-hover: #0056b3;
     --shadow: rgba(0, 0, 0, 0.1);
+    --input-bg: #ffffff;
+    --input-border: #cccccc;
 }
 
 body.dark-mode {
@@ -16,6 +18,8 @@ body.dark-mode {
     --button-bg: #3a3b3c;
     --button-hover: #4e4f50;
     --shadow: rgba(0, 0, 0, 0.5);
+    --input-bg: #3a3b3c;
+    --input-border: #4e4f50;
 }
 
 body {
@@ -104,6 +108,77 @@ h1 {
 
 #generate:hover {
     background-color: var(--button-hover);
+}
+
+.divider {
+    margin: 40px 0;
+    border: 0;
+    border-top: 1px solid var(--input-border);
+    opacity: 0.5;
+}
+
+.contact-section {
+    text-align: left;
+}
+
+.contact-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.form-group input, .form-group textarea {
+    padding: 12px;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--button-bg);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.submit-btn {
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
 }
 
 #theme-toggle {
